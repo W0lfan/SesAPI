@@ -1,0 +1,35 @@
+.result-toolbar {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    height: 50px;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0 10px 0 10px;
+}
+
+.result-toolbar .important-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.result-toolbar .main-search-bar {
+    border:none;
+    padding: 2px 10px 2px 10px;
+    height: calc(39px - 4px - 2px);
+    outline:none;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 50vh;
+    transition: 0.3s;
+    background-color: var(--app-main-theme-background);
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.result-toolbar .main-search-bar:focus {
+    border: 1px solid var(--app-main-theme-tone)
+}
