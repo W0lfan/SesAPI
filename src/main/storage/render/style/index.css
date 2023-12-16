@@ -112,8 +112,15 @@
 .article-read-display .open-more-actions .actions .small-view-action:hover {
     background-color: var(--app-main-theme-background-high-transparent);
 }
-
-
+.article-read-display .open-more-actions .actions .small-view-action .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.article-read-display .open-more-actions .actions .small-view-action .icon svg {
+    width: 20px;
+    height: 20px;
+}
 
 .storage-render.line {
     flex-direction: column;

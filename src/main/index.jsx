@@ -9,14 +9,14 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import StorageRender from "./storage/render";
 import { user_content } from "../../public/modules/data/utilities";
+import { storage } from "../../editor/edit/src/storage/access";
 
 
 const MainRendering = () => {
     // Replace later by localstorage
-    const storage = user_content;
     const [ storageDisplay, setStorageDisplay ] = useState(1);
     return (
-        <StorageRender storage = {storage} storageDisplay= {storageDisplay} />
+        <StorageRender storage = {storage.access().articles} storageDisplay= {storageDisplay} />
     )
 };
 

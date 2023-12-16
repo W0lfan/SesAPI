@@ -1,0 +1,63 @@
+.field {
+    padding: 20px 10px 20px 10px;
+    width: calc(100% - 20px);
+    background-color: var(--app-main-theme-background-darker);
+    border-radius: 20px;
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.field .content {
+    width: calc(100% - 10px - 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.field .tools {
+    position: relative;
+    width: 40px;
+    margin-top: -10px;
+}
+
+.field .tools svg {
+    width: 20px;
+    height: 20px;
+}
+.field .tools .icon {
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    transition: 0.3s;
+}
+.field .tools .icon:hover {
+    background-color: var(--app-main-theme-background-darker-3);
+}
+.field .tools .parameters {
+    position:absolute;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px;
+    right: 0;
+    transition: 0.3s;
+    box-shadow: 0px 0px 10px var(--app-main-theme-background-high-transparent-3);
+}
+.field .tools .parameters .parameter {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    cursor: pointer;
+    transition: 0.3s;
+    align-items: center;
+}
+
+.field .tools .parameters .parameter:hover {
+    background-color: var(--app-main-theme-background-darker-2);
+}

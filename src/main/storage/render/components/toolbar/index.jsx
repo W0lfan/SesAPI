@@ -6,10 +6,11 @@ import ActualizePopUp from "../../../../../../public/modules/utilities/popup";
 import appSvg from "../../../../../../public/modules/utilities/svg";
 import './index.css'
 import ReactDOM from 'react-dom';
+import SearchInput from "./search/input";
 
 function NewArticle() {
     ActualizePopUp(
-        {
+        { 
             title : "Start editing",
             description : "Select an option for editing."
         },
@@ -34,7 +35,10 @@ function NewArticle() {
 
 
 const ChangeDisplay = (t) => {
-    const p = findParentWithClass(t, 'button');
+    let p = t;
+    if (!p.classList.contains('button')) {
+        p = findParentWithClass(t, 'button');
+    }
     const icon = p.querySelector('.button-icon');
 
 
@@ -45,20 +49,24 @@ const ChangeDisplay = (t) => {
         const newIcon = appSvg.new('displayLine');
         ReactDOM.render(newIcon, icon);
         document.querySelector('.storage-render').classList.add('line');
-        Array.from(document.querySelectorAll('.article-read-display').forEach((i) => {
+        
+        Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
             i.classList.add('list');
-        }))
+        });
     } else {
         p.classList.add('grid');
         p.classList.remove('line');
         const newIcon = appSvg.new('displayGrid');
         ReactDOM.render(newIcon, icon);
         document.querySelector('.storage-render').classList.remove('line');
-        Array.from(document.querySelectorAll('.article-read-display').forEach((i) => {
+        Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
             i.classList.remove('list');
-        }))
+        });
     }
 };
+
+
+
 
 
 const ResultToolBar = () => {
@@ -73,14 +81,7 @@ const ResultToolBar = () => {
                     }}
                     action = {() => NewArticle()}
                 />
-                {appInput.new(
-                    'input',
-                    "Search an article",
-                    '',
-                    'searchInput',
-                    ['main-search-bar'],
-                    function() {}
-                )}
+                <SearchInput />
             </div>
             <AppButton 
                 type="filled"
