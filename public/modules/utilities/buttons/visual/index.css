@@ -3,8 +3,8 @@
 .button {
     color : var(--app-main-theme-tone-text);
 }
-.button svg {
-    fill : var(--app-main-theme-tone-text);
+.button .button-icon svg * {
+    fill : var(--app-main-theme-tone-text) !important;
 }
 
 .button:not(.button.contains-svg-only) {
@@ -18,6 +18,7 @@
 /*   Filled button   */
 .button.filled {
     background-color: var(--app-main-theme-tone);
+    fill: var(--app-main-theme-tone-text);
     border: 2px solid var(--app-main-theme-tone);
     padding: 7px 20px 7px 20px;
     border-radius: 5px;
@@ -35,7 +36,9 @@
     border-color: var(--app-main-theme-tone-ligther);
 
 }
-
+.button.filled .button-icon svg, .button.filled .button-icon svg * {
+    fill: var(--app-main-theme-tone-text) !important;
+}
 .button.filled .button-icon {
     width: fit-content;
     display: flex;
@@ -73,8 +76,25 @@
     background-color: var(--app-main-theme-tone-transparent);
 }
 
+.button .button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button .button-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.button.colorsvg svg {
+    fill : var(--app-main-theme-tone)
+}
+
 
 /* Blank buttons */ 
+.button.blank .button-icon svg, .button.blank .button-icon svg * {
+    fill: var(--app-main-theme-tone) !important;
+}
 
 .button.blank {
     color: var(--app-main-theme-tone);
@@ -96,15 +116,4 @@
 }
 
 
-.button .button-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.button.colorsvg svg {
-    fill : var(--app-main-theme-tone)
-}
-.button .button-icon svg rect {
-    fill:var(--app-main-theme-text-color);
-}
 
