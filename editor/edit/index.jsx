@@ -22,7 +22,7 @@ const fileTransfer = (article = null) => {
   }
   localStorage.setItem('running_article',JSON.stringify(article));
 
-  window.open("/editor/edit/index.html", "_self");
+  window.open("/SesAPI/editor/edit/index.html", "_self");
   // ?" + article.time.createdOn
 
 
