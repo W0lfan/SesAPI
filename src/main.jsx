@@ -9,9 +9,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
-
-if (!storage.access()) storage.set({});
-
-if (!storage.access("SesAPIParameters")) storage.set({
-    preferedDisplay : "grid"
-}, "SesAPIParameters" );

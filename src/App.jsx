@@ -75,6 +75,13 @@ const BetaAdvice = () => {
 }
 
 function App() {
+  if (!storage.access()) storage.set({});
+
+  if (!storage.access("SesAPIParameters")) storage.set({
+      preferedDisplay : "grid"
+  }, "SesAPIParameters" );
+
+
   return (
     <>
       <InfoBar />
