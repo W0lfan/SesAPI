@@ -25,7 +25,7 @@ const StorageRender = ( { s, storageDisplay } ) => {
                 }
                 {
                     s.length == 0 ? (
-                        <img src={"/SesAPI/public/image/noResults.png"} style={{
+                        <img src={"https://media.discordapp.net/attachments/951567105596207169/1185681369121177611/Nothing.png?ex=65907ed3&is=657e09d3&hm=5c4c702ba8a1c450bba448c616a3791ff90f064e8310808a3ff2499bcbbb152c&=&format=webp&quality=lossless&width=2371&height=733"} style={{
                             position:'absolute', width: '50%',
                             opacity: 0.5,
                             top:0,bottom:0,left:0,right:0,margin:'auto'
