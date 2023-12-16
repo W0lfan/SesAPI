@@ -16,7 +16,6 @@ const ArticleBody = ( { article } ) => {
     DefaultArticle = article;
     return (
         <div className="article edit">
-
             <div className="header">
                 <div className="title input-container">
                     <div className="box-info">Article name</div>
