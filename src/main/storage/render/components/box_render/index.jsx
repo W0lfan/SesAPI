@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import '../../style/index.css';
 import { useEffect, useRef, useState } from 'react';
 import ActualizePopUp from '../../../../../../public/modules/utilities/popup/index';
+import appSvg from '../../../../../../public/modules/utilities/svg';
+import save from '../../../../../../editor/edit/src/modules/save';
+import { DefaultArticle } from '../../../../../../editor/edit/src/components/body';
+import { storage } from '../../../../../../editor/edit/src/storage/access';
 
 const ArticleSmallViewActions = ( { article } ) => {
     const [ viewOptions , setOptionsView ] = useState(false);
@@ -58,7 +62,7 @@ const ArticleSmallViewActions = ( { article } ) => {
                         )
                 }>
                     <div className="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-337q-8 0-15-2.5t-13-8.5L308-492q-12-12-11.5-28t11.5-28q12-12 28.5-12.5T365-549l75 75v-286q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v286l75-75q12-12 28.5-11.5T652-548q11 12 11.5 28T652-492L508-348q-6 6-13 8.5t-15 2.5ZM240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Z"/></svg>
+                        {appSvg.new('download')}
                     </div>
                     <div className="text">
                         Download 
@@ -75,7 +79,10 @@ const ArticleSmallViewActions = ( { article } ) => {
                                     type : 'filled',
                                     container : { text : "Delete permanently" },
                                     action : function() {
-
+                                        let s = storage.access();
+                                        s.articles = s.articles.filter(item => item.time.createdOn !== article.time.createdOn);
+                                        storage.set(s);
+                                        window.location.href="";
                                     },
                                     custom_properties : []
                                 }
@@ -83,7 +90,7 @@ const ArticleSmallViewActions = ( { article } ) => {
                         )
                 }>
                     <div className="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm120-160q17 0 28.5-11.5T440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280Zm160 0q17 0 28.5-11.5T600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280Z"/></svg>
+                        {appSvg.new('trash')}
                     </div>
                     <div className="text">
                         Delete 
