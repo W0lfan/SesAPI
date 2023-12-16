@@ -12,7 +12,9 @@ export const popup = {
   
     portalRoot.classList.remove('active');
     popupContainer.remove();
-    portalRoot.innerHTML = ''
+    portalRoot.innerHTML = '';
+
+    console.log('Popup removed')
   }
 }
 
@@ -24,7 +26,7 @@ function ActualizePopUp(content, buttons = []) {
   const popupContainer = document.createElement('div');
   popupContainer.className = "popupcontainer";
   portalRoot.appendChild(popupContainer);
-  
+  console.log('popup called')
 
   if (!content.title) console.error('Error: missing a title for the popup module.');
   if (!buttons || buttons.length === 0) console.error('Error: missing proper actions for the popup module.');

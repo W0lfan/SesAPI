@@ -50,7 +50,6 @@ const appInput = {
                             if (action) {
                                 if (classNames.includes('autosize')) {
                                     const previousValue = event.target.value;
-
                                     setTimeout(() => {
                                         const currentValue = event.target.value;
                                         if (event.key === "Enter" || (event.key === "Backspace" && previousValue !== currentValue)) {
