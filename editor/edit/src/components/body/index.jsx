@@ -3,7 +3,7 @@ import appInput from '../../../../../public/modules/utilities/input';
 import '../../../public/style/article/body.css';
 import AppButton from '../../../../../public/modules/utilities/buttons/visual';
 import appSvg from '../../../../../public/modules/utilities/svg';
-import ResourceField from '../resources/field';
+import ResourceField from '../resources/link/field';
 import save from '../../modules/save';
 import Fields from '../fields';
 

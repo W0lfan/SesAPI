@@ -7,6 +7,7 @@ import appSvg from "../../../../../../public/modules/utilities/svg";
 import './index.css'
 import ReactDOM from 'react-dom';
 import SearchInput from "./search/input";
+import { storage } from "../../../../../../editor/edit/src/storage/access";
 
 function NewArticle() {
     ActualizePopUp(
@@ -40,7 +41,7 @@ const ChangeDisplay = (t) => {
         p = findParentWithClass(t, 'button');
     }
     const icon = p.querySelector('.button-icon');
-
+    const param = storage.access("SesAPIParameters");
 
 
     if (p.classList.contains('grid')) {
@@ -51,8 +52,9 @@ const ChangeDisplay = (t) => {
         document.querySelector('.storage-render').classList.add('line');
         
         Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
-            i.classList.add('list');
+            i.classList.add('line');
         });
+        param.preferedDisplay = "line";
     } else {
         p.classList.add('grid');
         p.classList.remove('line');
@@ -60,9 +62,12 @@ const ChangeDisplay = (t) => {
         ReactDOM.render(newIcon, icon);
         document.querySelector('.storage-render').classList.remove('line');
         Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
-            i.classList.remove('list');
+            i.classList.remove('line');
         });
+        param.preferedDisplay = "grid";
     }
+
+    storage.set(param,"SesAPIParameters")
 };
 
 

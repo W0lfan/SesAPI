@@ -4,9 +4,14 @@ import appInput from "../../../../../../public/modules/utilities/input";
 import appSvg from "../../../../../../public/modules/utilities/svg";
 import "../index.css";
 import PropTypes from 'prop-types';
-import ResourceField from "../../resources/field";
+import ResourceField from "../../resources/link/field";
+import { DefaultArticle } from "../../body";
+import save from "../../../modules/save";
+import OtherResources from "../../resources/other";
+import findParentWithClass from "../../../../../../public/modules/parent";
+import ActualizePopUp from "../../../../../../public/modules/utilities/popup";
 
-const Tools = () => {
+export const Tools = ({ funcs }) => {
     const [state, setState] = useState(false);
     const toolsRef = useRef(null);
 
@@ -36,7 +41,7 @@ const Tools = () => {
                 opacity: state ? 1 : 0,
                 display: state ? "flex" : "none"
             }}>
-                <div className="parameter">
+                <div className="parameter" onClick={() => funcs.delete()}>
                     {appSvg.new('trash')}
                     <div className="name">
                         Delete
@@ -46,29 +51,62 @@ const Tools = () => {
         </div>
     );
 }
+Tools.propTypes = {
+    funcs : PropTypes.object.isRequired,
+};
 
 const Field = ( { field,i } ) => {
 
 
     return (
-        <div className="field">
+        <div className="field" id={i+"field"}>
             <div className="content">
                 <div className="header">
                     <div className="name input-container">
                         <div className="box-info">Field name</div>
-                        {appInput.new('input','Field name',field.general.name || "New field","fieldName")}
+                        {appInput.new('input','Field name',field.general.name || "New field","fieldName",[],function(event) {
+                            let value = event.target.value;
+                            DefaultArticle.content[i].general.name = value;
+                            save(DefaultArticle);
+                        })}
                     </div>
                     <div className="description input-container">
                         <div className="box-info">Field description</div>
-                        {appInput.new('input','Field description',field.general.description || "","fieldDescription")}
+                        {appInput.new('textarea','Field description',field.general.description || "","fieldDescription",["autosize"], function(event) {
+                            let value = event.target.value;
+                            DefaultArticle.content[i].general.description = value;
+                            save(DefaultArticle);
+                        })}
                     </div>
                 </div>
+                <OtherResources fieldType={i} />
                 <ResourceField fieldType={i} />
             </div>
-            <Tools />
+            <Tools funcs={{
+                delete : function() {
+                    ContentDeletion(i);
+                }
+            }} />
         </div>
     )
 }
+
+function ContentDeletion(id) {
+    const p = document.getElementById(id+"field");
+    ActualizePopUp({
+        title : "Confirm deletion",
+        description : "Are you sure you want to proceed?"
+    }, [{
+        type : "filled",
+        container : {text:"Delete"},
+        action: function() {
+            p.remove();
+            DefaultArticle.content.splice(i,1);
+            save(DefaultArticle)
+        }
+    }])
+}
+
 Field.propTypes = {
     field : PropTypes.object.isRequired,
     i: PropTypes.number.isRequired

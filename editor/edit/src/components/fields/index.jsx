@@ -21,14 +21,15 @@ const Fields = () => {
                 container= {{svg : appSvg.new('plus') , text : "New field"}}
                 custom_properties={["fixed_new_fields"]}
                 action = {() => {
-                    setFields([...fields, {
+                    DefaultArticle.content = [...fields, {
                         general: {
                             name: "New field",
                             description: ""
                         },
                         resources: [],
                         content: []
-                    }])
+                    }];
+                    setFields(DefaultArticle.content)
                 }}
             />
             <div className="fields">

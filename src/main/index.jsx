@@ -15,8 +15,11 @@ import { storage } from "../../editor/edit/src/storage/access";
 const MainRendering = () => {
     // Replace later by localstorage
     const [ storageDisplay, setStorageDisplay ] = useState(1);
+
+    const st = storage.access().articles;
+    console.log(st)
     return (
-        <StorageRender storage = {storage.access().articles} storageDisplay= {storageDisplay} />
+        <StorageRender s = {st} storageDisplay= {storageDisplay} />
     )
 };
 

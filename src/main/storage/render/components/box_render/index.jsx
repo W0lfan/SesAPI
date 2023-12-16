@@ -3,6 +3,9 @@ import '../../style/index.css';
 import { useEffect, useRef, useState } from 'react';
 import ActualizePopUp from '../../../../../../public/modules/utilities/popup/index';
 import appSvg from '../../../../../../public/modules/utilities/svg';
+import save from '../../../../../../editor/edit/src/modules/save';
+import { DefaultArticle } from '../../../../../../editor/edit/src/components/body';
+import { storage } from '../../../../../../editor/edit/src/storage/access';
 
 const ArticleSmallViewActions = ( { article } ) => {
     const [ viewOptions , setOptionsView ] = useState(false);
@@ -76,7 +79,10 @@ const ArticleSmallViewActions = ( { article } ) => {
                                     type : 'filled',
                                     container : { text : "Delete permanently" },
                                     action : function() {
-
+                                        let s = storage.access();
+                                        s.articles = s.articles.filter(item => item.time.createdOn !== article.time.createdOn);
+                                        storage.set(s);
+                                        window.location.href="";
                                     },
                                     custom_properties : []
                                 }

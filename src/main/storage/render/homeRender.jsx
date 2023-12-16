@@ -3,6 +3,7 @@ import './style/index.css';
 import fileTransfer from '../../../../editor/edit';
 import AppTimeConverter from '../../../../public/modules/utilities/time';
 import ArticleSmallViewActions from './components/box_render';
+import { storage } from '../../../../editor/edit/src/storage/access';
 
 
 
@@ -17,7 +18,7 @@ const ArticleSmallView = ( { article } ) => {
     
     return (
         <>
-            <div className="article-read-display">
+            <div className={"article-read-display" + " " + storage.access('SesAPIParameters').preferedDisplay}>
                 <div className="content" onClick={() => fileTransfer(article)}>
                     <div className="header">
                         <div className="name">

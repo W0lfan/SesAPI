@@ -36,7 +36,9 @@
     border-color: var(--app-main-theme-tone-ligther);
 
 }
-
+.button.filled .button-icon svg, .button.filled .button-icon svg * {
+    fill: var(--app-main-theme-tone-text) !important;
+}
 .button.filled .button-icon {
     width: fit-content;
     display: flex;
