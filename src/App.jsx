@@ -7,6 +7,7 @@ import MainRendering from './main/index';
 import appSvg from '../public/modules/utilities/svg';
 import './index.css';
 import ActualizePopUp from '../public/modules/utilities/popup';
+import { storage } from '../editor/edit/src/storage/access';
 
 
 
