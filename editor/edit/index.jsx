@@ -22,8 +22,8 @@ const fileTransfer = (article = null) => {
   }
   localStorage.setItem('running_article',JSON.stringify(article));
 
-  window.open("/editor/edit/?" + article.time.createdOn, "_self");
-
+  window.open("/editor/edit/index.html", "_self");
+  // ?" + article.time.createdOn
 
 
   // If you want to navigate after rendering, do it here.
