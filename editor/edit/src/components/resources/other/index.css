@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .support-choices {
     width: 100%;
     display: flex;
@@ -114,4 +115,122 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px !important;
     background-color: var(--app-main-theme-background-darker-2);
+=======
+.support-choices {
+    width: 100%;
+    display: flex;
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.support-choices .box-button {
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+}
+
+.image-addition {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.image-addition .render {
+    background-color: var(--app-main-theme-background-darker-2);
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 20px;
+}
+.image-addition .render img {
+    max-width: 50%;
+    max-height: 30vh;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px var(--app-main-theme-background-darker-3);
+}
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 50%;
+}
+
+.image-addition .input-fields textarea, .image-addition .input-fields  input {
+    background-color: var(--app-main-theme-background-darker-2);
+}
+
+.image-addition .input-fields textarea:hover, .image-addition .input-fields  input:hover, .image-addition .input-fields textarea:focus, .image-addition .input-fields  input:focus {
+    background-color: var(--app-main-theme-background-darker-3);
+}
+.other-resources {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.other-resources .resources-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.other-resources .resources-container .image-resource {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 20px;
+}
+.other-resources .resources-container .image-resource .image img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+
+.code-addition {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.code-addition textarea:hover, .code-addition input:hover,.code-addition textarea:focus, .code-addition input:focus {
+    background-color: var(--app-main-theme-background-darker-2);
+}
+.code-addition .render {
+    width: 50%;
+}
+.code-addition .render textarea {
+    background-color: var(--app-main-theme-background-darker-2);
+    overflow-y: auto;
+    height: 200px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+
+
+.code-resource {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 20px;
+}
+
+.code-resource .code {
+    width: 90%;
+}
+
+.code-resource .code textarea {
+    height: 150px !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px !important;
+    background-color: var(--app-main-theme-background-darker-2);
+>>>>>>> 218f891f43297a53f31bca18f62cdcc649d01f8a
 }
