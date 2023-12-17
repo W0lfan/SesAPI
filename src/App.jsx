@@ -8,6 +8,7 @@ import appSvg from '../public/modules/utilities/svg';
 import './index.css';
 import ActualizePopUp from '../public/modules/utilities/popup';
 import { storage } from '../editor/edit/src/storage/access';
+import app from '../app';
 
 
 
@@ -44,7 +45,7 @@ InfoBar.PropTypes = {
   active : PropTypes.string.isRequired
 }
 
-export const BetaAdvice = () => {
+export const Version = () => {
   const BetaOpen = () => {
     ActualizePopUp(
       {
@@ -72,10 +73,20 @@ export const BetaAdvice = () => {
   }
 
   return (
-    <div className="beta-message">
-      <div className="text">
-        <p>This version is currently in <a onClick={() => BetaOpen()}>beta</a>.</p>
-        <p>Make sure to report any major problems.</p>
+    <div className="app-details">
+      <div className="app">
+        <div className="status">
+          {app.details.status}
+        </div>
+        <div className="version">
+          Version {app.details.version}
+        </div>
+      </div>
+      <div className="beta-message">
+        <div className="text">
+          <p>SesAPI is currently in <a onClick={() => BetaOpen()}>beta</a>.</p>
+          <p>Make sure to report any major problems.</p>
+        </div>
       </div>
     </div>
   )
@@ -94,7 +105,7 @@ function App() {
       <InfoBar active={"Editor"}/>
       <MainRendering />
       <div className="popup-container-dnd"></div>
-      <BetaAdvice />
+      <Version />
     </>
   )
 }

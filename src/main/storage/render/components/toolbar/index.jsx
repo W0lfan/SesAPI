@@ -1,7 +1,6 @@
 import fileTransfer from "../../../../../../editor/edit";
 import findParentWithClass from "../../../../../../public/modules/parent";
 import AppButton from "../../../../../../public/modules/utilities/buttons/visual";
-import appInput from "../../../../../../public/modules/utilities/input";
 import ActualizePopUp from "../../../../../../public/modules/utilities/popup";
 import appSvg from "../../../../../../public/modules/utilities/svg";
 import './index.css'

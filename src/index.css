@@ -8,11 +8,22 @@ body a {
 body a:hover {
     text-decoration: underline;
 }
-.beta-message {
+
+.app-details {
     position:fixed;
     bottom:0;
-    width: 100%;
-    padding-bottom: 10px;
+    width: calc(100% - 50px);
+    padding: 10px 25px 10px 25px;
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+.app-details .beta-message {
+    width: calc(100% - 30vh);
+    padding-right: 30vh;
+}
+.app-details .app {
+    width: 30vh;
 }
 .beta-message .text {
     display: flex;
@@ -23,7 +34,6 @@ body a:hover {
 }
 .beta-message .text p {
     margin:0;
-    font-size: 12px;
 }
 
 
