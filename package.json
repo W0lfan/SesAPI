@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --base /SesAPI/",
+    "deploy": "npm run build && gh-pages -d dist -b gh-pages",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
