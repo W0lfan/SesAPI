@@ -45,7 +45,7 @@ const Toolsbar = () => {
     return (
       <div className="toolsbar">
         <div className="left-container">
-            <a href='/'>
+            <a href='/SesAPI/'>
             {appSvg.new('logotype')}
             </a>
             <div className="tools">
