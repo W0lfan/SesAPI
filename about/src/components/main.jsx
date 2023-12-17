@@ -27,7 +27,7 @@ const MainAboutPage = () => {
                             text : 'Get started'
                         }}
                         action={() => {
-                            window.open('/','_self')
+                            window.open('https://w0lfan.github.io/SesAPI/','_self')
                         }}
                         custom_properties={["bigButton"]}
                     />
