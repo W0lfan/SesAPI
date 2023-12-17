@@ -11,10 +11,10 @@ import { storage } from '../editor/edit/src/storage/access';
 
 
 
-const InfoBar = () => {
+export const InfoBar = ({active}) => {
   const sectionItems = [
-    { n : "Library" , l : '', in : true},
-    { n : "About" , l : ''},
+    { n : "Editor" , l : '/'},
+    { n : "About" , l : '/SesAPI/about/'},
   ]
 
   return (
@@ -25,7 +25,11 @@ const InfoBar = () => {
       <div className="sections">
         {
           sectionItems.map((e,i) => (
-            <div className={"item " +( e.in ? 'in' : '')} key={i}>
+            <div className={"item " +( e.n == active ? 'in' : '')} key={i}
+              onClick={() => {
+                window.open(e.l,"_self");
+              }}
+            >
                 <div className="text">
                   {e.n}
                 </div>
@@ -36,9 +40,11 @@ const InfoBar = () => {
     </div>
   )
 };
+InfoBar.PropTypes = {
+  active : PropTypes.string.isRequired
+}
 
-
-const BetaAdvice = () => {
+export const BetaAdvice = () => {
   const BetaOpen = () => {
     ActualizePopUp(
       {
@@ -85,7 +91,7 @@ function App() {
 
   return (
     <>
-      <InfoBar />
+      <InfoBar active={"Editor"}/>
       <MainRendering />
       <div className="popup-container-dnd"></div>
       <BetaAdvice />

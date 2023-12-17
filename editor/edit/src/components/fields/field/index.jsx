@@ -9,7 +9,7 @@ import { DefaultArticle } from "../../body";
 import save from "../../../modules/save";
 import OtherResources from "../../resources/other";
 import findParentWithClass from "../../../../../../public/modules/parent";
-import ActualizePopUp from "../../../../../../public/modules/utilities/popup";
+import ActualizePopUp, { popup } from "../../../../../../public/modules/utilities/popup";
 
 export const Tools = ({ funcs }) => {
     const [state, setState] = useState(false);
@@ -101,8 +101,9 @@ function ContentDeletion(id) {
         container : {text:"Delete"},
         action: function() {
             p.remove();
-            DefaultArticle.content.splice(i,1);
-            save(DefaultArticle)
+            DefaultArticle.content.splice(id,1);
+            save(DefaultArticle);
+            popup.close();
         }
     }])
 }
