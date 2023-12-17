@@ -11,5 +11,5 @@ export default defineConfig({
       '@editor': path.resolve(__dirname, '/editor/edit/'),
       // Add more aliases for other subdirectories as needed
     },
-  },
+  }, 
 })
