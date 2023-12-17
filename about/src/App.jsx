@@ -6,7 +6,8 @@ import MainAboutPage from './components/main';
 
 
 
-function App() {
+function AboutApp() {
+  
   return (
     <>
       <InfoBar active={"About"}/>
@@ -17,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default AboutApp;

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import StorageRender from "./storage/render";
 import { user_content } from "../../public/modules/data/utilities";
 import { storage } from "../../editor/edit/src/storage/access";
+import { InfoBar } from "../App";
 
 
 const MainRendering = () => {
@@ -19,7 +20,10 @@ const MainRendering = () => {
     const st = storage.access().articles;
     console.log(st)
     return (
-        <StorageRender s = {st} storageDisplay= {storageDisplay} />
+        <>
+            <InfoBar active={"Editor"}/>
+            <StorageRender s = {st} storageDisplay= {storageDisplay} />
+        </>
     )
 };
 

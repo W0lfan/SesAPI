@@ -9,13 +9,15 @@ import './index.css';
 import ActualizePopUp from '../public/modules/utilities/popup';
 import { storage } from '../editor/edit/src/storage/access';
 import app from '../app';
+import { Link, Route, Routes } from 'react-router-dom';
+import AboutApp from '../about/src/App';
 
 
 
 export const InfoBar = ({active}) => {
   const sectionItems = [
     { n : "Editor" , l : '/'},
-    { n : "About" , l : '/SesAPI/about/'},
+    { n : "About" , l : '/about/'},
   ]
 
   return (
@@ -26,15 +28,13 @@ export const InfoBar = ({active}) => {
       <div className="sections">
         {
           sectionItems.map((e,i) => (
-            <div className={"item " +( e.n == active ? 'in' : '')} key={i}
-              onClick={() => {
-                window.open(e.l,"_self");
-              }}
-            >
-                <div className="text">
-                  {e.n}
-                </div>
-            </div>
+            <Link to={e.l}>
+              <div className={"item " +( e.n == active ? 'in' : '')} key={i}>
+                  <div className="text">
+                    {e.n}
+                  </div>
+              </div>
+            </Link>
           ))
         }
       </div>
@@ -102,8 +102,10 @@ function App() {
 
   return (
     <>
-      <InfoBar active={"Editor"}/>
-      <MainRendering />
+      <Routes>
+        <Route path="/" element={<MainRendering />}/>
+        <Route path="/about" element={<AboutApp />} />
+      </Routes>
       <div className="popup-container-dnd"></div>
       <Version />
     </>
