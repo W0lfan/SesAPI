@@ -22,7 +22,6 @@
     align-items: center;
 }
 .image-addition .render {
-    background-color: var(--app-main-theme-background-darker-2);
     padding: 10px;
     align-items: center;
     justify-content: center;
@@ -30,8 +29,9 @@
     border-radius: 20px;
 }
 .image-addition .render img {
-    max-width: 50%;
+    max-width: calc(50% - 20px);
     max-height: 30vh;
+    padding: 10px;
     border-radius: 20px;
     box-shadow: 5px 5px 10px var(--app-main-theme-background-darker-3);
 }

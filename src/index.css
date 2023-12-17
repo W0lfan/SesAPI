@@ -18,6 +18,11 @@ body a:hover {
     flex-direction: row;
     font-size: 13px;
 }
+.app-details.bottom {
+    position: relative;
+    background-color: white;
+}
+
 .app-details .beta-message {
     width: calc(100% - 30vh);
     padding-right: 30vh;
@@ -68,6 +73,10 @@ body a:hover {
     border-radius: 5px;
     transition: 0.3s;
     position: relative;
+    text-decoration: none !important;
+}
+.info-bar .sections .item .text {
+    text-decoration: none !important;
 }
 
 .info-bar .sections .item.in::before {

@@ -20,10 +20,10 @@ const MainRendering = () => {
     const st = storage.access().articles;
     console.log(st)
     return (
-        <>
+        <div className="home-main-render">
             <InfoBar active={"Editor"}/>
             <StorageRender s = {st} storageDisplay= {storageDisplay} />
-        </>
+        </div>
     )
 };
 

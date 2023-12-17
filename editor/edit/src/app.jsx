@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
-import appSvg from '../../../public/modules/utilities/svg';
-import appInput from '../../../public/modules/utilities/input';
 import ArticleBody from './components/body';
 import './index.css';
 import '../../../public/styling/root/index.css'
 import Toolsbar from './components/toolbar';
-import Fields from './components/fields';
 
+function EditorApp() {
+  const infoBar = document.querySelector('.info-bar');
+  if (infoBar) infoBar.remove();
 
+  const drive = [
+    document.querySelector('.result-toolbar'),
+    document.querySelector('.storage-render')
+  ];
+  drive.forEach((i) => {
+    if (i) i.remove();
+  })
 
+  document.querySelector('.app-details').classList.add('bottom')
 
-function App() {
   let article;
   const s = JSON.parse(localStorage.getItem('running_article'));
   if (s) {
@@ -32,4 +39,4 @@ function App() {
 }
 
 
-export default App;
+export default EditorApp;

@@ -4,6 +4,8 @@ import fileTransfer from '../../../../editor/edit';
 import AppTimeConverter from '../../../../public/modules/utilities/time';
 import ArticleSmallViewActions from './components/box_render';
 import { storage } from '../../../../editor/edit/src/storage/access';
+import { Link, Route, Routes } from 'react-router-dom';
+import EditorApp from '../../../../editor/edit/src/app';
 
 
 
@@ -19,26 +21,32 @@ const ArticleSmallView = ( { article } ) => {
     return (
         <>
             <div className={"article-read-display" + " " + storage.access('SesAPIParameters').preferedDisplay}>
-                <div className="content" onClick={() => fileTransfer(article)}>
-                    <div className="header">
-                        <div className="name">
-                            {name}
+                <Link to='/editor/edit'>
+                    <div className="content" onClick={() => fileTransfer(article)}>
+                        <div className="header">
+                            <div className="name">
+                                {name}
+                            </div>
+                            {
+                                description ? (
+                                    <div className="description">
+                                        {description}
+                                    </div>
+                                ) : null
+                            }
                         </div>
-                        <div className="description">
-                            {description}
+                        <div className="statistics">
+                            <div className="container">
+                                <span>Last edit on</span>
+                                <span>{AppTimeConverter(lastEdit)}</span>
+                            </div>
+                            <div className="container">
+                                <span>Created on</span>
+                                <span>{AppTimeConverter(createdOn)}</span>
+                            </div>
                         </div>
                     </div>
-                    <div className="statistics">
-                        <div className="container">
-                            <span>Last edit on</span>
-                            <span>{AppTimeConverter(lastEdit)}</span>
-                        </div>
-                        <div className="container">
-                            <span>Created on</span>
-                            <span>{AppTimeConverter(createdOn)}</span>
-                        </div>
-                    </div>
-                </div>
+                </Link>
                 <ArticleSmallViewActions article={article} />
             </div>
         </>

@@ -7,30 +7,11 @@ import './index.css'
 import ReactDOM from 'react-dom';
 import SearchInput from "./search/input";
 import { storage } from "../../../../../../editor/edit/src/storage/access";
+import { Link, Route, Routes } from "react-router-dom";
+import EditorApp from "../../../../../../editor/edit/src/app";
 
 function NewArticle() {
-    ActualizePopUp(
-        { 
-            title : "Start editing",
-            description : "Select an option for editing."
-        },
-        [
-            {
-                type : 'filled',
-                container : { text : 'Create from scratch'},
-                action : function() {
-                   fileTransfer();
-                },
-                custom_properties : []
-                },
-            {
-                type : 'filled',
-                container : { text : 'Upload'},
-                action : function() {},
-                custom_properties : []
-            }
-        ]
-    )
+    fileTransfer();
 }
 
 
@@ -75,28 +56,35 @@ const ChangeDisplay = (t) => {
 
 const ResultToolBar = () => {
     return (
-        <div className="result-toolbar">
-            <div className="important-container">
+        <>
+            <Routes>
+                <Route path="/editor/edit/" element={<EditorApp />}/>
+            </Routes>
+            <div className="result-toolbar">
+                <div className="important-container">
+                    <Link to={"/editor/edit"}>
+                        <AppButton 
+                            type="filled"
+                            container = {{
+                                svg : appSvg.new('plus'),
+                                text : 'New',
+                            }}
+                            action = {() => NewArticle()}
+                        />
+                    </Link>
+                    <SearchInput />
+                </div>
                 <AppButton 
                     type="filled"
                     container = {{
-                        svg : appSvg.new('plus'),
-                        text : 'New',
+                        svg : appSvg.new(storage.access('SesAPIParameters').preferedDisplay == "grid" ? 'displayGrid' : "displayLine"),
+                        text : 'Change display',
                     }}
-                    action = {() => NewArticle()}
+                    custom_properties={['grid']}
+                    action = {(event) => ChangeDisplay(event.target)}
                 />
-                <SearchInput />
             </div>
-            <AppButton 
-                type="filled"
-                container = {{
-                    svg : appSvg.new('displayGrid'),
-                    text : 'Change display',
-                }}
-                custom_properties={['grid']}
-                action = {(event) => ChangeDisplay(event.target)}
-            />
-        </div>
+        </>
     )
 };
 

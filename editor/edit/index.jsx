@@ -1,19 +1,5 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './src/app';
+import { useEffect } from 'react';
 import data from '../../public/modules/data';
-
-
-if (window.location.href.includes('/editor/edit/')) {
-  ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-      <App/>
-    </React.StrictMode>,
-  );
-}
-
-
-
 
 const fileTransfer = (article = null) => {
   if (!article) {
@@ -21,12 +7,13 @@ const fileTransfer = (article = null) => {
     console.log('article',article)
   }
   localStorage.setItem('running_article',JSON.stringify(article));
+  useEffect(() => {
+    document.title = article.general.name || "New article";
+    return () => {
+      document.title = article.general.name || "New article";
+    };
+  }, []); 
 
-  window.open("/SesAPI/editor/edit/?" + article.time.createdOn, "_self");
-  // ?" + article.time.createdOn
-
-
-  // If you want to navigate after rendering, do it here.
 };
 
 

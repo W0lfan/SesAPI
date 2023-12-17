@@ -3,6 +3,7 @@
 .button {
     color : var(--app-main-theme-tone-text);
 }
+
 .button .button-icon svg * {
     fill : var(--app-main-theme-tone-text) !important;
 }

@@ -62,6 +62,16 @@
 
 
 /* Actions */
+
+.article-read-display a {
+    text-decoration: none;
+    color: unset;
+    font-size:  unset;
+}
+.article-read-display a:hover {
+    text-decoration: none;
+}
+
 .article-read-display .open-more-actions {
     position:relative;
     width: fit-content;
@@ -133,14 +143,25 @@
     height: 5vh;
     justify-content: space-between;
 }
-
+.article-read-display.line a {
+    width: calc(100% - 200px - 50px);
+}
 .article-read-display.line .content {
     flex-direction: row;
-    width: calc(100% - 200px - 50px);
     justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+}
+
+.article-read-display.line a {
+    align-items: center;
 }
 .article-read-display.line .content .header {
-    width: 40%;
+    width: calc(100% - 200px - 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .article-read-display.line .open-more-actions {
@@ -171,8 +192,17 @@
 
 .article-read-display.line .content .header .description {
     font-size: 13px;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
+.article-read-display.line .content .header .name {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .article-read-display .open-more-actions .actions .small-view-action:hover {
     background-color: var(--app-main-theme-background-darker-2);
 }

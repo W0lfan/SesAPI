@@ -11,6 +11,7 @@ import { storage } from '../editor/edit/src/storage/access';
 import app from '../app';
 import { Link, Route, Routes } from 'react-router-dom';
 import AboutApp from '../about/src/App';
+import EditorApp from '../editor/edit/src/app';
 
 
 
@@ -28,7 +29,7 @@ export const InfoBar = ({active}) => {
       <div className="sections">
         {
           sectionItems.map((e,i) => (
-            <Link to={e.l}>
+            <Link to={e.l} style={{textDecoration:"none"}}>
               <div className={"item " +( e.n == active ? 'in' : '')} key={i}>
                   <div className="text">
                     {e.n}
@@ -103,8 +104,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainRendering />}/>
+        <Route path="*" element={<MainRendering />}/>
         <Route path="/about" element={<AboutApp />} />
+        <Route path="/editor/edit" element={<EditorApp />} />
       </Routes>
       <div className="popup-container-dnd"></div>
       <Version />
