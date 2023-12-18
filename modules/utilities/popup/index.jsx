@@ -15,6 +15,9 @@ export const popup = {
     portalRoot.innerHTML = '';
 
     console.log('Popup removed')
+  },
+  new : function(content, buttons) {
+    ActualizePopUp(content,buttons);
   }
 }
 
@@ -83,4 +86,3 @@ function ActualizePopUp(content, buttons = []) {
 
 }
 
-export default ActualizePopUp;
