@@ -15,12 +15,13 @@ function TriggerSearchResult() {
     }
 
     c.forEach((_) => {
-        const t = _.querySelector('.content .header .name');
-        const d = _.querySelector('.content .header .description');
-
-        if (!t.innerHTML.includes(v) && !d.innerHTML.includes(v)) {
+        console.log(_)
+        const t = _.querySelector('.link .content .header .name');
+        const d = _.querySelector('.link .content .header .description');
+        console.log(t,d)
+        if ((!t || (t && !t.innerHTML.includes(v))) && (!d || (d && !d.innerHTML.includes(v)))) {
             _.style.display = 'none';
-        } else if (_.style.display == 'none') {
+        } else if (_.style.display == 'none' || v.length == 0) {
             _.style.display = 'flex';
         }
     })

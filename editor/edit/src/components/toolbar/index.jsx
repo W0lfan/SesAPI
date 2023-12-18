@@ -1,5 +1,5 @@
 import AppButton from "../../../../../public/modules/utilities/buttons/visual";
-import ActualizePopUp from "../../../../../public/modules/utilities/popup";
+import { popup } from "../../../../../public/modules/utilities/popup";
 import appSvg from "../../../../../public/modules/utilities/svg";
 import Switch from "../../../../../public/modules/utilities/switch";
 import '../../../public/style/article/body.css';
@@ -53,7 +53,7 @@ const Toolsbar = () => {
                     type="blank"
                     container={{text : "Editor settings"}}
                     action={() => {
-                        ActualizePopUp({
+                        popup.new({
                             title : "Editor settings",
                             description: "The following parameters are exclusive to this document, and allows you to customize your preferences regarding the edition.",
                             code : (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import findParentWithClass from '../../../../../../public/modules/parent';
 import AppButton from '../../../../../../public/modules/utilities/buttons/visual';
 import appInput from '../../../../../../public/modules/utilities/input';
-import ActualizePopUp, { popup } from '../../../../../../public/modules/utilities/popup';
+import { popup } from '../../../../../../public/modules/utilities/popup';
 import appSvg from '../../../../../../public/modules/utilities/svg';
 import './index.css';
 import { DefaultArticle } from '../../body';
@@ -12,7 +12,7 @@ import { storage } from '../../../storage/access';
 
 
 function NewLink(t, setResources, resources, edit = false, editValue) {
-    ActualizePopUp(
+    popup.new(
         {
             title: edit ? "Edit Resource" : "Create a new resource",
             description: "Enter the name of your hypertext, followed by its link.",

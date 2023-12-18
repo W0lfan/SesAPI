@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import appSvg from '../../../../../../public/modules/utilities/svg';
 import AppButton from '../../../../../../public/modules/utilities/buttons/visual';
-import ActualizePopUp, { popup } from '../../../../../../public/modules/utilities/popup';
+import { popup } from '../../../../../../public/modules/utilities/popup';
 import './index.css';
 import appInput from '../../../../../../public/modules/utilities/input';
 import { useState } from 'react';
@@ -95,7 +95,7 @@ const OtherResources = ({ fieldType }) => {
                     text: 'New support'
                 }}
                 action={() => {
-                    ActualizePopUp({
+                    popup.new({
                         title : "Create a new support",
                         description : "Please pick one of the two supports you would like to add.",
                     },[{
@@ -103,7 +103,7 @@ const OtherResources = ({ fieldType }) => {
                         container : {svg: appSvg.new('image'),text:"Image"},
                         action : function() {
                             popup.close();
-                            ActualizePopUp({
+                            popup.new({
                                 title : "Create a new support: image",
                                 description : "Fill the necessary fields to add an image.",
                                 code: (
@@ -120,7 +120,7 @@ const OtherResources = ({ fieldType }) => {
                         container : {svg: appSvg.new('code'),text:"Code"},
                         action: function() {
                             popup.close();
-                            ActualizePopUp({
+                            popup.new({
                                 title : "Create a new support: code",
                                 description : "Fill the necessary fields to add a code.",
                                 code: (

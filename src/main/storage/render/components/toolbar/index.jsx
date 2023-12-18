@@ -1,7 +1,6 @@
 import fileTransfer from "../../../../../../editor/edit";
 import findParentWithClass from "../../../../../../public/modules/parent";
 import AppButton from "../../../../../../public/modules/utilities/buttons/visual";
-import ActualizePopUp from "../../../../../../public/modules/utilities/popup";
 import appSvg from "../../../../../../public/modules/utilities/svg";
 import './index.css'
 import ReactDOM from 'react-dom';
@@ -9,45 +8,36 @@ import SearchInput from "./search/input";
 import { storage } from "../../../../../../editor/edit/src/storage/access";
 import { Link, Route, Routes } from "react-router-dom";
 import EditorApp from "../../../../../../editor/edit/src/app";
+import { useState } from "react";
 
 function NewArticle() {
     fileTransfer();
 }
 
 
-const ChangeDisplay = (t) => {
-    let p = t;
-    if (!p.classList.contains('button')) {
-        p = findParentWithClass(t, 'button');
-    }
-    const icon = p.querySelector('.button-icon');
+const ChangeDisplay = (t,state,setState) => {
     const param = storage.access("SesAPIParameters");
 
+    if (!t.classList.contains('display-button')) {
+        t = findParentWithClass(t,'display-button');
+    }
+    param.preferedDisplay = t.id;
 
-    if (p.classList.contains('grid')) {
-        p.classList.remove('grid');
-        p.classList.add('line');
-        const newIcon = appSvg.new('displayLine');
-        ReactDOM.render(newIcon, icon);
+    if (t.id == "line") {
         document.querySelector('.storage-render').classList.add('line');
         
         Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
             i.classList.add('line');
         });
-        param.preferedDisplay = "line";
     } else {
-        p.classList.add('grid');
-        p.classList.remove('line');
-        const newIcon = appSvg.new('displayGrid');
-        ReactDOM.render(newIcon, icon);
         document.querySelector('.storage-render').classList.remove('line');
         Array.from(document.querySelectorAll('.article-read-display')).forEach((i) => {
             i.classList.remove('line');
         });
-        param.preferedDisplay = "grid";
     }
 
-    storage.set(param,"SesAPIParameters")
+    storage.set(param,"SesAPIParameters");
+    setState(!state);
 };
 
 
@@ -55,6 +45,8 @@ const ChangeDisplay = (t) => {
 
 
 const ResultToolBar = () => {
+    const [ displayState, setDisplayState ] = useState(false);
+
     return (
         <>
             <Routes>
@@ -74,15 +66,24 @@ const ResultToolBar = () => {
                     </Link>
                     <SearchInput />
                 </div>
-                <AppButton 
-                    type="filled"
-                    container = {{
-                        svg : appSvg.new(storage.access('SesAPIParameters').preferedDisplay == "grid" ? 'displayGrid' : "displayLine"),
-                        text : 'Change display',
-                    }}
-                    custom_properties={['grid']}
-                    action = {(event) => ChangeDisplay(event.target)}
-                />
+                <div className="display">
+                    <div className="display-button" id="grid" onClick={(event) => ChangeDisplay(event.target,displayState,setDisplayState)}>
+                        {
+                            storage.access('SesAPIParameters').preferedDisplay == "grid" ? appSvg.new('check') : null 
+                        }
+                        <div className="button">
+                            {appSvg.new('displayGrid')}
+                        </div>
+                    </div>
+                    <div className="display-button" id="line" onClick={(event) => ChangeDisplay(event.target,displayState,setDisplayState)}>
+                        {
+                            storage.access('SesAPIParameters').preferedDisplay == "line" ? appSvg.new('check') : null 
+                        }
+                        <div className="button">
+                            {appSvg.new('displayLine')}
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

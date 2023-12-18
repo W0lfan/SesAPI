@@ -8,8 +8,7 @@ import ResourceField from "../../resources/link/field";
 import { DefaultArticle } from "../../body";
 import save from "../../../modules/save";
 import OtherResources from "../../resources/other";
-import findParentWithClass from "../../../../../../public/modules/parent";
-import ActualizePopUp, { popup } from "../../../../../../public/modules/utilities/popup";
+import { popup } from "../../../../../../public/modules/utilities/popup";
 
 export const Tools = ({ funcs }) => {
     const [state, setState] = useState(false);
@@ -93,7 +92,7 @@ const Field = ( { field,i } ) => {
 
 function ContentDeletion(id) {
     const p = document.getElementById(id+"field");
-    ActualizePopUp({
+    popup.new({
         title : "Confirm deletion",
         description : "Are you sure you want to proceed?"
     }, [{

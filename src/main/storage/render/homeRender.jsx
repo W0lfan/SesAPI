@@ -21,7 +21,7 @@ const ArticleSmallView = ( { article } ) => {
     return (
         <>
             <div className={"article-read-display" + " " + storage.access('SesAPIParameters').preferedDisplay}>
-                <Link to='/editor/edit'>
+                <Link to='/editor/edit' className='link'>
                     <div className="content" onClick={() => fileTransfer(article)}>
                         <div className="header">
                             <div className="name">

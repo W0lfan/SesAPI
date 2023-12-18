@@ -20,7 +20,7 @@ const StorageRender = ( { s, storageDisplay } ) => {
             <div className={"storage-render" + " " + storage.access('SesAPIParameters').preferedDisplay}>
                 {
                     cutStorage.map((value,a) => {
-                        return <ArticleSmallView article={value} />
+                        return <ArticleSmallView article={value} key={a}/>
                     })
                 }
                 {

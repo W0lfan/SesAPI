@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
 import '../../style/index.css';
 import { useEffect, useRef, useState } from 'react';
-import ActualizePopUp from '../../../../../../public/modules/utilities/popup/index';
+import { popup } from '../../../../../../public/modules/utilities/popup';
 import appSvg from '../../../../../../public/modules/utilities/svg';
-import save from '../../../../../../editor/edit/src/modules/save';
-import { DefaultArticle } from '../../../../../../editor/edit/src/components/body';
 import { storage } from '../../../../../../editor/edit/src/storage/access';
+import downloadFile from '../../../../../../editor/edit/src/modules/download';
+
+const download = (a,t) => {
+    downloadFile(a,t);
+    popup.close();
+}
+
+
 
 const ArticleSmallViewActions = ( { article } ) => {
     const [ viewOptions , setOptionsView ] = useState(false);
@@ -36,7 +42,7 @@ const ArticleSmallViewActions = ( { article } ) => {
             </div>
             <div className="actions" style={{visibility: !viewOptions ? 'hidden' : 'visible', opacity: !viewOptions ? '0' : '1'}}>
                 <div className="small-view-action" onClick={
-                        () => ActualizePopUp(
+                        () => popup.new(
                             {
                                 title : "Download existing file",
                                 description : "Select your prefered filetype."
@@ -45,17 +51,13 @@ const ArticleSmallViewActions = ( { article } ) => {
                                 {
                                     type : 'filled',
                                     container : { text : article.general.name + ".txt" },
-                                    action : function() {
-
-                                    },
+                                    action : () => download(article,'text'),
                                     custom_properties : ["buttonContainText"]
                                 },
                                 {
                                     type : 'filled',
                                     container : { text : article.general.name + ".json" },
-                                    action : function() {
-
-                                    },
+                                    action : () => download(article,'json'),
                                     custom_properties : ["buttonContainText"]
                                 }
                             ]
@@ -69,7 +71,7 @@ const ArticleSmallViewActions = ( { article } ) => {
                     </div>
                 </div>
                 <div className="small-view-action" onClick={
-                        () => ActualizePopUp(
+                        () => popup.new(
                             {
                                 title : '"' + article.general.name + '"' + " deletion",
                                 description : "Are you sure you want to delete this file?"

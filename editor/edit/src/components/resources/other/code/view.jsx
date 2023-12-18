@@ -3,7 +3,7 @@ import { useState } from 'react';
 import save from '../../../../modules/save';
 import appInput from '../../../../../../../public/modules/utilities/input';
 import { Tools } from '../../../fields/field';
-import ActualizePopUp, { popup } from '../../../../../../../public/modules/utilities/popup';
+import { popup } from '../../../../../../../public/modules/utilities/popup';
 import { DefaultArticle } from '../../../body';
 
 
@@ -49,7 +49,7 @@ const CodeRender = ( {code, codeIndex, fieldIndex} ) => {
 };
 
 function ContentDeletion(p,I,i) {
-    ActualizePopUp({
+    popup.new({
         title : "Code deletion",
         description : "Are you sure you want to delete this code?"
     }, [{

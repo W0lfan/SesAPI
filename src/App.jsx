@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-import AppButton from '../public/modules/utilities/buttons/visual';
-
 import '../public/styling/root/index.css'
 import '../public/styling/modules/index.css'
 import MainRendering from './main/index';
 import appSvg from '../public/modules/utilities/svg';
 import './index.css';
-import ActualizePopUp from '../public/modules/utilities/popup';
+import { popup } from '../public/modules/utilities/popup';
 import { storage } from '../editor/edit/src/storage/access';
 import app from '../app';
 import { Link, Route, Routes } from 'react-router-dom';
@@ -29,7 +27,7 @@ export const InfoBar = ({active}) => {
       <div className="sections">
         {
           sectionItems.map((e,i) => (
-            <Link to={e.l} style={{textDecoration:"none"}}>
+            <Link to={e.l} style={{textDecoration:"none"}} key={i}>
               <div className={"item " +( e.n == active ? 'in' : '')} key={i}>
                   <div className="text">
                     {e.n}
@@ -48,7 +46,7 @@ InfoBar.PropTypes = {
 
 export const Version = () => {
   const BetaOpen = () => {
-    ActualizePopUp(
+    popup.new(
       {
         title : 'About SesAPI',
         description : 'SesAPI is a tool designed for Starblast players of any type. From pros to starters, write or read articles to improve yourself in any way.\nFor more informations, please join the Discord Server or read the blog post.\nThis tool is experimental and is subject to changes and improvements.',
