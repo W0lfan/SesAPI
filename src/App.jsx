@@ -15,7 +15,7 @@ import EditorApp from '../editor/edit/src/app';
 
 export const InfoBar = ({active}) => {
   const sectionItems = [
-    { n : "Editor" , l : '/'},
+    { n : "Drive" , l : '/'},
     { n : "About" , l : '/about/'},
   ]
 
@@ -72,7 +72,7 @@ export const Version = () => {
   }
 
   return (
-    <div className="app-details">
+    <div className="app-details bottom">
       <div className="app">
         <div className="status">
           {app.details.status}
@@ -89,7 +89,9 @@ export const Version = () => {
       </div>
     </div>
   )
-}
+}  
+
+
 
 function App() {
   if (!storage.access()) storage.set({});

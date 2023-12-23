@@ -6,6 +6,7 @@ import appSvg from '../../../../../public/modules/utilities/svg';
 import ResourceField from '../resources/link/field';
 import save from '../../modules/save';
 import Fields from '../fields';
+import Editor from '../../main/app/Init';
 
 
 
@@ -18,7 +19,7 @@ const ArticleBody = ( { article } ) => {
         <div className="article edit">
             <div className="header">
                 <div className="title input-container">
-                    <div className="box-info">Article name</div>
+                    {Editor.InfoBox('Article name')}
                     {appInput.new(
                         'input','Article title', DefaultArticle.general.name, "articleTitle",
                         ["pseudo-input"], function(event) {
@@ -29,7 +30,7 @@ const ArticleBody = ( { article } ) => {
                      )}
                  </div>
                 <div className="description input-container">
-                    <div className="box-info">Article description</div>
+                    {Editor.InfoBox('Article description')}
                     {appInput.new(
                         'textarea','Article description', DefaultArticle.general.description, "articleTitle",
                          ["pseudo-input"], function(event) {

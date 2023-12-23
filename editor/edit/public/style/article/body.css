@@ -54,7 +54,7 @@ input, textarea {
     gap: 5px;
 }
 
-.box-info {
+.info-box {
     font-size: 13px;
     text-transform: uppercase;
     font-weight: bold;

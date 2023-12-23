@@ -11,7 +11,7 @@ const MainRendering = () => {
     console.log(st)
     return (
         <div className="home-main-render">
-            <InfoBar active={"Editor"}/>
+            <InfoBar active={"Drive"}/>
             <StorageRender s = {st} storageDisplay= {storageDisplay} />
         </div>
     )

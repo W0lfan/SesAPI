@@ -47,8 +47,9 @@ function ActualizePopUp(content, buttons = []) {
               key={i}
               type={button.type}
               container={button.container}
-              action={() => button.action()} // Call the function here
+              action={() => button.action()} 
               custom_properties={button.custom_properties}
+              
             />
           )
         }

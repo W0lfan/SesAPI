@@ -9,43 +9,23 @@ import { DefaultArticle } from "../../body";
 import save from "../../../modules/save";
 import OtherResources from "../../resources/other";
 import { popup } from "../../../../../../public/modules/utilities/popup";
+import Editor from "../../../main/app/Init";
+
 
 export const Tools = ({ funcs }) => {
-    const [state, setState] = useState(false);
-    const toolsRef = useRef(null);
-
-    useEffect(() => {
-        // Function to handle clicks outside the .tools component
-        const handleClickOutside = (event) => {
-            if (toolsRef.current && !toolsRef.current.contains(event.target)) {
-                setState(false);
-            }
-        };
-
-        // Attach the event listener when the component mounts
-        document.addEventListener("click", handleClickOutside);
-
-        // Detach the event listener when the component unmounts
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
+    const icons = {
+        "edit" : appSvg.new('edit'),
+        "delete" : appSvg.new('trash')
+    }
 
     return (
-        <div className="tools" ref={toolsRef}>
-            <div className="icon" onClick={() => setState(!state)}>
-                {appSvg.new('points')}
-            </div>
-            <div className="parameters" style={{
-                opacity: state ? 1 : 0,
-                display: state ? "flex" : "none"
-            }}>
-                <div className="parameter" onClick={() => funcs.delete()}>
-                    {appSvg.new('trash')}
-                    <div className="name">
-                        Delete
+        <div className="tools">
+            <div className="parameters">
+                {Object.keys(funcs).map((item) => (
+                    <div className="parameter" onClick={() => funcs[item]()}>
+                        {icons[item]}
                     </div>
-                </div>
+                ))}
             </div>
         </div>
     );
@@ -54,43 +34,43 @@ Tools.propTypes = {
     funcs : PropTypes.object.isRequired,
 };
 
-const Field = ( { field,i } ) => {
-
-
-    return (
-        <div className="field" id={i+"field"}>
-            <div className="content">
-                <div className="header">
-                    <div className="name input-container">
-                        <div className="box-info">Field name</div>
-                        {appInput.new('input','Field name',field.general.name || "New field","fieldName",[],function(event) {
-                            let value = event.target.value;
-                            DefaultArticle.content[i].general.name = value;
-                            save(DefaultArticle);
-                        })}
+const Field = ( { field,i, setFields } ) => {
+    if (field) {
+        return (
+            <div className="field" id={i+"field"}>
+                <div className="content">
+                    <div className="header">
+                        <div className="name input-container">
+                            {Editor.InfoBox('Field name')}
+                            {appInput.new('input','Field name',field.general.name || "New field","fieldName",[],function(event) {
+                                let value = event.target.value;
+                                DefaultArticle.content[i].general.name = value;
+                                save(DefaultArticle);
+                            })}
+                        </div>
+                        <div className="description input-container">
+                            {Editor.InfoBox('Field description')}
+                            {appInput.new('textarea','Field description',field.general.description || "","fieldDescription",["autosize"], function(event) {
+                                let value = event.target.value;
+                                DefaultArticle.content[i].general.description = value;
+                                save(DefaultArticle);
+                            })}
+                        </div>
                     </div>
-                    <div className="description input-container">
-                        <div className="box-info">Field description</div>
-                        {appInput.new('textarea','Field description',field.general.description || "","fieldDescription",["autosize"], function(event) {
-                            let value = event.target.value;
-                            DefaultArticle.content[i].general.description = value;
-                            save(DefaultArticle);
-                        })}
-                    </div>
+                    <OtherResources fieldType={i} />
+                    <ResourceField fieldType={i} />
                 </div>
-                <OtherResources fieldType={i} />
-                <ResourceField fieldType={i} />
+                <Tools funcs={{
+                    delete : function() {
+                        ContentDeletion(i,setFields);
+                    }
+                }} />
             </div>
-            <Tools funcs={{
-                delete : function() {
-                    ContentDeletion(i);
-                }
-            }} />
-        </div>
-    )
+        )
+    }
 }
 
-function ContentDeletion(id) {
+function ContentDeletion(id,setFields) {
     const p = document.getElementById(id+"field");
     popup.new({
         title : "Confirm deletion",
@@ -98,10 +78,14 @@ function ContentDeletion(id) {
     }, [{
         type : "filled",
         container : {text:"Delete"},
-        action: function() {
-            p.remove();
-            DefaultArticle.content.splice(id,1);
-            save(DefaultArticle);
+        action: function () {
+            if (p) {
+                p.remove();
+                if (id >= 0 && id < DefaultArticle.content.length) {
+                    DefaultArticle.content.splice(id, 1);
+                    setFields(DefaultArticle.content);
+                }
+            }
             popup.close();
         }
     }])
@@ -109,7 +93,8 @@ function ContentDeletion(id) {
 
 Field.propTypes = {
     field : PropTypes.object.isRequired,
-    i: PropTypes.number.isRequired
+    i: PropTypes.number.isRequired,
+    setFields : PropTypes.func.isRequired
 };
 
 export default Field;

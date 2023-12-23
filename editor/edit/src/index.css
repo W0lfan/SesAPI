@@ -19,6 +19,13 @@ body {
     z-index: 50;
 }
 
+.toolsbar .left-container .tools {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 .toolsbar .left-container {
     display: flex;
     flex-direction: row;
@@ -47,4 +54,55 @@ body {
 .toolsbar .save-update svg {
     width: 25px;
     height: 25px;
+}
+
+
+/*  Error */
+.error-message {
+    width: 80%;
+    margin:auto;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.error-message .big {
+    font-size: 30px;
+}
+.error-message .info {
+    font-size: 20px;
+}
+.error-message .more {
+    width: 40%;
+    transition: 0.3s;
+    background-color: var(--app-main-theme-background-high-transparent);
+    border-radius: 20px;
+}
+
+.error-message .more .content {
+    width: calc(100% - 40px);
+    padding: 20px;
+}
+
+.error-message .more .content .description {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+.error-message .error-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    gap: 5px;
+}
+
+.error-message .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

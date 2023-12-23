@@ -15,7 +15,6 @@ function TriggerSearchResult() {
     }
 
     c.forEach((_) => {
-        console.log(_)
         const t = _.querySelector('.link .content .header .name');
         const d = _.querySelector('.link .content .header .description');
         console.log(t,d)

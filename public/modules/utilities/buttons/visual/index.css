@@ -118,3 +118,21 @@
 
 
 
+/* Textual */
+.button.textual {
+    border: 2px solid rgba(0,0,0,0);
+    color: var(--app-main-theme-tone);
+    padding: 7px 20px 7px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button.textual:hover {
+    background-color: var(--app-main-theme-background-darker-2);
+}

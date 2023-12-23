@@ -11,6 +11,29 @@ const download = (a,t) => {
     popup.close();
 }
 
+export function ExternalDownload(article) {
+    popup.new(
+        {
+            title : "Download existing file",
+            description : "Select your prefered filetype."
+        },
+        [
+            {
+                type : 'filled',
+                container : { text : article.general.name + ".txt" },
+                action : () => download(article,'text'),
+                custom_properties : ["buttonContainText"]
+            },
+            {
+                type : 'filled',
+                container : { text : article.general.name + ".json" },
+                action : () => download(article,'json'),
+                custom_properties : ["buttonContainText"]
+            }
+        ]
+    )
+
+}
 
 
 const ArticleSmallViewActions = ( { article } ) => {
@@ -41,28 +64,7 @@ const ArticleSmallViewActions = ( { article } ) => {
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
             </div>
             <div className="actions" style={{visibility: !viewOptions ? 'hidden' : 'visible', opacity: !viewOptions ? '0' : '1'}}>
-                <div className="small-view-action" onClick={
-                        () => popup.new(
-                            {
-                                title : "Download existing file",
-                                description : "Select your prefered filetype."
-                            },
-                            [
-                                {
-                                    type : 'filled',
-                                    container : { text : article.general.name + ".txt" },
-                                    action : () => download(article,'text'),
-                                    custom_properties : ["buttonContainText"]
-                                },
-                                {
-                                    type : 'filled',
-                                    container : { text : article.general.name + ".json" },
-                                    action : () => download(article,'json'),
-                                    custom_properties : ["buttonContainText"]
-                                }
-                            ]
-                        )
-                }>
+                <div className="small-view-action" onClick={() => ExternalDownload(article)}>
                     <div className="icon">
                         {appSvg.new('download')}
                     </div>

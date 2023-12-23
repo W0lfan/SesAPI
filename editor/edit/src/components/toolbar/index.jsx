@@ -4,9 +4,15 @@ import appSvg from "../../../../../public/modules/utilities/svg";
 import Switch from "../../../../../public/modules/utilities/switch";
 import '../../../public/style/article/body.css';
 import { useState } from 'react';
+import { storage } from "../../storage/access";
+import EditorSettings from "./editor";
+import DownloadButton from "./download";
 
 function displayManagement(d)  {
-    const i = document.querySelectorAll('.box-info');
+    const Storage = storage.access('SesAPIParameters');
+    Storage.enableInfoBox = !Storage.enableInfoBox;
+    storage.set(Storage,'SesAPIParameters');
+    const i = document.querySelectorAll('.info-box');
     if (i) {
         Array.from(i).forEach((i) => {
             i.style.display = d;
@@ -16,6 +22,10 @@ function displayManagement(d)  {
 
 function buttonOpacity(d) {
     // true for disabling
+
+    const Storage = storage.access('SesAPIParameters');
+    Storage.disableOpacity = !Storage.disableOpacity;
+    storage.set(Storage,'SesAPIParameters');
     if (d) {
         const t = document.querySelectorAll('.filled');
         if (t) {
@@ -37,9 +47,13 @@ function buttonOpacity(d) {
     }
 }
 
+const BetaView = () => {
+    const Storage = storage.access('SesAPIParameters');
+    Storage.enableSecondView = !Storage.enableSecondView;
+    storage.set(Storage,'SesAPIParameters');
+};
+
 const Toolsbar = () => {
-    const [ switchField, setSwitchField ] = useState(true);
-    const [ opacityButton, setopacityButton ] = useState(false);
 
 
     return (
@@ -49,51 +63,8 @@ const Toolsbar = () => {
             {appSvg.new('logotype')}
             </a>
             <div className="tools">
-                <AppButton
-                    type="blank"
-                    container={{text : "Editor settings"}}
-                    action={() => {
-                        popup.new({
-                            title : "Editor settings",
-                            description: "The following parameters are exclusive to this document, and allows you to customize your preferences regarding the edition.",
-                            code : (
-                                <div className="in-parameters">
-                                    <Switch 
-                                        boxName="Display fields indicators"
-                                        boxDescription = "Fields above the inputs help understand what you are doing."
-                                        states = {{
-                                            default : switchField,
-                                            on : () => {
-                                                displayManagement('flex');
-                                                setSwitchField(true);
-                                            },
-                                            off : () => {
-                                                displayManagement('none');
-                                                setSwitchField(false);
-                                            }
-                                        }}
-                                    />
-                                    <Switch 
-                                        boxName="Buttons opacity"
-                                        boxDescription = "Buttons might take some place. Enable this parameter to reduce them."
-                                        states = {{
-                                            default : opacityButton,
-                                            on : () => {
-                                                buttonOpacity(true);
-                                                setopacityButton(true);
-                                            },
-                                            off : () => {
-                                                buttonOpacity(false);
-                                                setopacityButton(false);
-                                            }
-                                        }}
-                                    />
-                                </div>
-                            ),
-                            customEndMessage : 'Done'
-                        })
-                    }}      
-                />
+                <EditorSettings />
+                <DownloadButton />
             </div>
         </div>
 

@@ -71,19 +71,17 @@ const OtherResources = ({ fieldType }) => {
 
 
     save(DefaultArticle);
-    console.log(fieldType,DefaultArticle)
 
     const v = DefaultArticle.content[fieldType].visualResources;
-    console.log(v)
     return (
         <div className="other-resources" key={fieldType}>
             <div className="resources-container">
                 {
                     v ? v.map((r,i) => {
                         if (r.src) {
-                            return <ImageRender image={r} imageIndex={i} fieldIndex={fieldType} />
+                            return <ImageRender image={r} imageIndex={i} fieldIndex={fieldType} key={i}/>
                         } else {
-                            return <CodeRender code={r} codeIndex={i} fieldIndex={i} />
+                            return <CodeRender code={r} codeIndex={i} fieldIndex={fieldType} key={i} />
                         }
                     }) : null
                 }

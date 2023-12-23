@@ -1,3 +1,4 @@
+import app from '../../../app';
 import AppButton from '../../../public/modules/utilities/buttons/visual';
 import appSvg from '../../../public/modules/utilities/svg';
 import './index.css';
@@ -49,7 +50,7 @@ const MainAboutPage = () => {
                     }}
                     custom_properties={["bigButton"]}
                     action={() => {
-                        window.open('https://discord.com/invite/hXsrvCjDmF');
+                        window.open(app.support.src);
                     }}
                 />
             </div>

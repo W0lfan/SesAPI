@@ -34,3 +34,26 @@ body .icon {
     align-items: center;
     justify-content: center;
 }
+
+/* For webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var( --app-main-theme-text-color);
+    border-radius: 50px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--app-main-theme-tone-ligther);
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--app-main-theme-tone);
+  }
+  

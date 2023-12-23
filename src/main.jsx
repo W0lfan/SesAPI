@@ -5,6 +5,7 @@ import './index.css'
 import { storage } from '../editor/edit/src/storage/access.js'
 import { HashRouter as Router } from "react-router-dom";
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
@@ -19,4 +20,12 @@ if (!storage.access("SesAPIParameters")) storage.set({
     preferedDisplay : "grid"
 }, "SesAPIParameters" );
 
+localStorage.removeItem('running_article');
 
+
+const Storage = storage.access('SesAPIParameters');
+if (Storage.opacityDisplay == undefined) Storage.disableOpacity = false;
+if (Storage.enableSecondView == undefined) Storage.enableSecondView = false;
+if (Storage.enableInfoBox == undefined) Storage.enableInfoBox = true;
+
+storage.set(Storage,'SesAPIParameters');

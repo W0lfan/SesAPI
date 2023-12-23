@@ -13,10 +13,12 @@ body a:hover {
     position:fixed;
     bottom:0;
     width: calc(100% - 50px);
+    gap: 50px;
     padding: 10px 25px 10px 25px;
     display: flex;
     flex-direction: row;
     font-size: 13px;
+    height: fit-content;
 }
 .app-details.bottom {
     position: relative;
@@ -24,11 +26,17 @@ body a:hover {
 }
 
 .app-details .beta-message {
-    width: calc(100% - 30vh);
-    padding-right: 30vh;
+    width: calc(100% - 30vh - 50px);
+    padding-right: calc(30vh - 50px);
 }
 .app-details .app {
     width: 30vh;
+}
+.app-details .app * {
+    white-space: nowrap;
+}
+.beta-message .text p {
+    text-decoration: none !important;
 }
 .beta-message .text {
     display: flex;
@@ -39,9 +47,12 @@ body a:hover {
 }
 .beta-message .text p {
     margin:0;
+    white-space: nowrap;
 }
 
-
+.home-main-render {
+    min-height: calc(100vh - 55px);
+}
 .info-bar {
     width: calc(100% - 20px);
     padding: 20px 10px 20px 10px;
@@ -61,6 +72,7 @@ body a:hover {
     padding-right: 50px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 50px;
     align-items: center;
     font-size: 20px;
@@ -68,12 +80,14 @@ body a:hover {
 .info-bar .sections .item:not(.item.in) {
     cursor: pointer;
 }
+
+
 .info-bar .sections .item {
     padding: 10px 20px 10px 20px;
     border-radius: 5px;
     transition: 0.3s;
     position: relative;
-    text-decoration: none !important;
+    white-space: nowrap;
 }
 .info-bar .sections .item .text {
     text-decoration: none !important;
