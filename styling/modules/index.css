@@ -84,7 +84,7 @@
     padding: 30px 50px 30px 50px;
     border-radius: 20px;
     min-height: 20vh;
-    min-width: 80vh;
+    width: calc(100% - 150px);
     max-width: 80vh;
     transition: 0.3s;
     display: flex;
@@ -114,4 +114,8 @@
     align-items: center;
     justify-content: end;
     width: 100%;
+}
+
+.popup * input:hover, .popup * textarea:hover, .popup * input:focus,  .popup * textarea:focus {
+  background-color: var(--app-main-theme-background-darker-2);
 }
