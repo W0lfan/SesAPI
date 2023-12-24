@@ -1,7 +1,5 @@
-import { useState } from "react";
 import AppButton from "../buttons/visual";
 import ReactDOM from "react-dom";
-import SetLoader, { SetLoaderStatus } from "../loader";
 import '../../../styling/modules/index.css';
 
 
@@ -29,7 +27,6 @@ function ActualizePopUp(content, buttons = []) {
   const popupContainer = document.createElement('div');
   popupContainer.className = "popupcontainer";
   portalRoot.appendChild(popupContainer);
-  console.log('popup called')
 
   if (!content.title) console.error('Error: missing a title for the popup module.');
   if (!buttons || buttons.length === 0) console.error('Error: missing proper actions for the popup module.');

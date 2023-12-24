@@ -9,7 +9,7 @@ const Error = ( { } ) => {
         <div className="error-message">
             <div className="top">
                 <div className="big">An error occured</div>
-                <div className="info">The document you requested is not available.</div>
+                <div className="info">The document you requested is not available</div>
             </div>
             <div className="more">
                 <div className="content">
@@ -18,7 +18,7 @@ const Error = ( { } ) => {
                         <span>If you believe there is an error, please report it.</span>
                     </div>
                     <div className="information">
-                        Document with ID {ShadowCheck.redirect()} is not available.
+                        Document <span className="num">{ShadowCheck.redirect(true)}</span> is not available.
                     </div>
                 </div>
             </div>

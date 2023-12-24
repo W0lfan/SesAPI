@@ -23,10 +23,11 @@
 
 }
 .field .tools {
-    position: relative;
-    width: 40px;
-    margin-top: -10px;
-    margin-bottom: auto;
+    background-color: rgba(0,0,0,0) !important;
+    position:absolute;
+    overflow: hidden;
+    right: 10px;
+    top: 10px;
 }
 
 .field .tools svg {
@@ -46,14 +47,11 @@
 }
 
 .field .tools .parameters {
-    position:absolute;
     display: flex;
     flex-direction: row;
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--app-main-theme-background);
-    right: 5px;
-    top: 5px;
     transition: 0.3s;
     box-shadow: 0px 0px 10px var(--app-main-theme-background-high-transparent-3);
 }

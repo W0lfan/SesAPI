@@ -35,6 +35,7 @@ Tools.propTypes = {
 };
 
 const Field = ( { field,i, setFields } ) => {
+
     if (field) {
         return (
             <div className="field" id={i+"field"}>
@@ -58,7 +59,7 @@ const Field = ( { field,i, setFields } ) => {
                         </div>
                     </div>
                     <OtherResources fieldType={i} />
-                    <ResourceField fieldType={i} />
+                    <ResourceField fieldType={i} setFields={setFields} />
                 </div>
                 <Tools funcs={{
                     delete : function() {

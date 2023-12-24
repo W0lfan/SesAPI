@@ -7,6 +7,7 @@ import ResourceField from '../resources/link/field';
 import save from '../../modules/save';
 import Fields from '../fields';
 import Editor from '../../main/app/Init';
+import ArticleRender from '../../../../render';
 
 
 

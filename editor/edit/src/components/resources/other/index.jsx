@@ -58,7 +58,7 @@ export const newCode = (resources,setResources,fieldType) => {
 }
 
 
-const OtherResources = ({ fieldType }) => {
+const OtherResources = ({ fieldType, setFields }) => {
     if (!DefaultArticle.content[fieldType].visualResources) {
         DefaultArticle.content[fieldType].visualResources = [];
     }
@@ -79,9 +79,9 @@ const OtherResources = ({ fieldType }) => {
                 {
                     v ? v.map((r,i) => {
                         if (r.src) {
-                            return <ImageRender image={r} imageIndex={i} fieldIndex={fieldType} key={i}/>
+                            return <ImageRender image={r} imageIndex={i} fieldIndex={fieldType} key={i} setFields = {setFields} />
                         } else {
-                            return <CodeRender code={r} codeIndex={i} fieldIndex={fieldType} key={i} />
+                            return <CodeRender code={r} codeIndex={i} fieldIndex={fieldType} key={i}  setFields = {setFields}  />
                         }
                     }) : null
                 }
@@ -138,5 +138,6 @@ const OtherResources = ({ fieldType }) => {
 };
 OtherResources.propTypes = {
     fieldType : PropTypes.string.isRequired,
+    setFields : PropTypes.func.isRequired
 };
 export default OtherResources;

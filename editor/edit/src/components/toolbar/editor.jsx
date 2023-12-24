@@ -3,6 +3,7 @@ import AppButton from "../../../../../public/modules/utilities/buttons/visual";
 import { popup } from "../../../../../public/modules/utilities/popup";
 import { storage } from "../../storage/access";
 import Switch from "../../../../../public/modules/utilities/switch";
+import { BetaView, buttonOpacity, displayManagement } from ".";
 
 
 const EditorSettings = () => {

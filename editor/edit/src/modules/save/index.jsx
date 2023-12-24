@@ -21,7 +21,6 @@ const save = (article) => {
         
     
         storage.set(s);
-        console.log(s)    
         const update = () => {
             const box = document.querySelector('.save-update');
             const value = box.querySelector('.value');

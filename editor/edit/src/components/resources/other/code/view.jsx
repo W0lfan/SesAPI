@@ -11,7 +11,7 @@ import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js';
 
 
-const CodeRender = ( {code, codeIndex, fieldIndex} ) => {
+const CodeRender = ( {code, codeIndex, fieldIndex, setFields} ) => {
     const [ codeContent, setCode ] = useState(js_beautify(`${code.content}`));
     const [numLines, setNumLines] = useState(0);
 
@@ -78,6 +78,7 @@ const CodeRender = ( {code, codeIndex, fieldIndex} ) => {
                             popup.close();
                             setCode('');
                             setCode(js_beautify(`${code.content}`));
+                            setFields(DefaultArticle.content)
                         }}])
                     },
                     delete : function() {
@@ -108,6 +109,7 @@ CodeRender.propTypes = {
     code : PropTypes.object.isRequired,
     codeIndex : PropTypes.number.isRequired,
     fieldIndex : PropTypes.string.isRequired,
+    setFields : PropTypes.func.isRequired
 };
 
 

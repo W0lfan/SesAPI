@@ -8,9 +8,8 @@ import { DefaultArticle } from '../../../body';
 import Editor from '../../../../main/app/Init';
 
 
-const ImageRender = ( {image, imageIndex, fieldIndex} ) => {
+const ImageRender = ( {image, imageIndex, fieldIndex, setFields} ) => {
     const [ img, setImg ] = useState(image.src);
-
     return (
         <div className="image-resource" key={imageIndex} id={image.id}>
             <>
@@ -52,6 +51,7 @@ const ImageRender = ( {image, imageIndex, fieldIndex} ) => {
                         save(DefaultArticle);
                         popup.close();
                         setImg(img);
+                        setFields(DefaultArticle.content)
                     }}])
                 }, 
                 delete : function() {
@@ -82,6 +82,7 @@ ImageRender.propTypes = {
     image : PropTypes.object.isRequired,
     imageIndex : PropTypes.number.isRequired,
     fieldIndex : PropTypes.number.isRequired,
+    setFields : PropTypes.func.isRequired
 };
 
 

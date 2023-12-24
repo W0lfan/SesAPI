@@ -25,4 +25,15 @@ function downloadFile(article, type) {
     document.body.removeChild(link);
 }
 
+export function downloadImage(imageUrl,name) {
+    var link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `${name}.png`; // Set the desired file name for the downloaded image
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
 export default downloadFile;

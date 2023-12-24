@@ -3,12 +3,12 @@ import { popup } from "../../../../../public/modules/utilities/popup";
 import appSvg from "../../../../../public/modules/utilities/svg";
 import Switch from "../../../../../public/modules/utilities/switch";
 import '../../../public/style/article/body.css';
-import { useState } from 'react';
 import { storage } from "../../storage/access";
 import EditorSettings from "./editor";
 import DownloadButton from "./download";
+import DisplayRender from "./render";
 
-function displayManagement(d)  {
+export function displayManagement(d)  {
     const Storage = storage.access('SesAPIParameters');
     Storage.enableInfoBox = !Storage.enableInfoBox;
     storage.set(Storage,'SesAPIParameters');
@@ -20,7 +20,7 @@ function displayManagement(d)  {
     }
 }
 
-function buttonOpacity(d) {
+export function buttonOpacity(d) {
     // true for disabling
 
     const Storage = storage.access('SesAPIParameters');
@@ -47,7 +47,7 @@ function buttonOpacity(d) {
     }
 }
 
-const BetaView = () => {
+export const BetaView = () => {
     const Storage = storage.access('SesAPIParameters');
     Storage.enableSecondView = !Storage.enableSecondView;
     storage.set(Storage,'SesAPIParameters');
@@ -65,6 +65,7 @@ const Toolsbar = () => {
             <div className="tools">
                 <EditorSettings />
                 <DownloadButton />
+                <DisplayRender />
             </div>
         </div>
 
