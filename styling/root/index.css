@@ -8,8 +8,9 @@
     --app-main-theme-tone-transparent-2 : rgba(119, 130, 249,0.2);
 
 
-    --app-main-theme-text-color : rgb(245, 245, 245);
+    --app-main-theme-text-color : rgb(15, 15, 15);
     --app-main-theme-text-color-transparent : rgba(18, 18, 18,0.4);
+    --app-main-theme-text-color-transparent-2 : rgba(18, 18, 18,0.7);
     --app-main-theme-background : #f8f8f8;
     --app-main-theme-background-darker : #f0f0f0;
     --app-main-theme-background-darker-2 : #e8e8e8;
@@ -29,10 +30,14 @@ body {
     font-family: var(--app-main-text-font);
 }
 
-body .icon {
+body * .icon {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 /* For webkit browsers (Chrome, Safari) */
@@ -42,7 +47,6 @@ body .icon {
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: var( --app-main-theme-text-color);
     border-radius: 50px;
   }
   
@@ -57,3 +61,4 @@ body .icon {
     background: var(--app-main-theme-tone);
   }
   
+
