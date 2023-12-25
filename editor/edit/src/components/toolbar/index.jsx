@@ -7,6 +7,7 @@ import { storage } from "../../storage/access";
 import EditorSettings from "./editor";
 import DownloadButton from "./download";
 import DisplayRender from "./render";
+import DisplayUpload from "./upload";
 
 export function displayManagement(d)  {
     const Storage = storage.access('SesAPIParameters');
@@ -66,6 +67,7 @@ const Toolsbar = () => {
                 <EditorSettings />
                 <DownloadButton />
                 <DisplayRender />
+                <DisplayUpload />
             </div>
         </div>
 

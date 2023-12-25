@@ -40,7 +40,7 @@ export const InfoBar = ({active}) => {
     </div>
   )
 };
-InfoBar.PropTypes = {
+InfoBar.propTypes = {
   active : PropTypes.string.isRequired
 }
 

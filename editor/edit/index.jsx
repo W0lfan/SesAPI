@@ -13,6 +13,8 @@ const fileTransfer = (article = null) => {
     };
   }, []); 
 
+  console.log('New article:',article)
+
 };
 
 

@@ -13,6 +13,11 @@ import EditorApp from '../../../../editor/edit/src/app';
 
 
 const ArticleSmallView = ( { article } ) => {
+    try {
+        article = JSON.parse(article)
+    } catch(error) {
+        article = article;
+    }
     const name = article.general.name;
     const description = article.general.description;
     const createdOn = article.time.createdOn;

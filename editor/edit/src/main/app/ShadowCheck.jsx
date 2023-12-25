@@ -20,6 +20,8 @@ const ShadowCheck = {
       }
       
       const Storage = storage.access();
+      if (!Storage.articles) Storage.articles = [];
+      storage.set(Storage)
       const foundArticle = Storage.articles.find((article) => {
         return article.time.createdOn === id;
       });

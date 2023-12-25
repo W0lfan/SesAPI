@@ -14,13 +14,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-if (!storage.access()) storage.set({});
+if (!storage.access()) storage.set({articles:[]});
 
 if (!storage.access("SesAPIParameters")) storage.set({
     preferedDisplay : "grid"
 }, "SesAPIParameters" );
 
 localStorage.removeItem('running_article');
+
+
 
 
 const Storage = storage.access('SesAPIParameters');

@@ -3,7 +3,6 @@ import findParentWithClass from "../../../../../../public/modules/parent";
 import AppButton from "../../../../../../public/modules/utilities/buttons/visual";
 import appSvg from "../../../../../../public/modules/utilities/svg";
 import './index.css'
-import ReactDOM from 'react-dom';
 import SearchInput from "./search/input";
 import { storage } from "../../../../../../editor/edit/src/storage/access";
 import { Link, Route, Routes } from "react-router-dom";
@@ -11,7 +10,7 @@ import EditorApp from "../../../../../../editor/edit/src/app";
 import { useState } from "react";
 
 function NewArticle() {
-    fileTransfer();
+    fileTransfer()
 }
 
 

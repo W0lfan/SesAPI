@@ -79,6 +79,10 @@
     position:relative;
     padding-left: 15px;
     margin:0 !important;
+    min-height: 50px;
+    display: flex;
+    
+    align-items: center;
 }
 .resource * .action {
     width: fit-content;

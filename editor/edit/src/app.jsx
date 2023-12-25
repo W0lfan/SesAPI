@@ -2,6 +2,7 @@ import './index.css';
 import '../../../public/styling/root/index.css'
 import ShadowCheck from './main/app/ShadowCheck';
 import Editor from './main/app/Init';
+import fileTransfer from '..';
 
 
 function EditorApp() {
@@ -15,7 +16,12 @@ function EditorApp() {
       );
     } else {
       console.error('An unexpected error happened while trying to load an article by link.');
-      return Editor.error();
+      console.log(ShadowCheck.redirect(true))
+      if (!ShadowCheck.redirect(true)) {
+        fileTransfer();
+      } else {
+        return Editor.error();
+      }
     }
   }
 }
