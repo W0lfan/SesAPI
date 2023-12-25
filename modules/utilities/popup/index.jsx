@@ -9,7 +9,7 @@ export const popup = {
     const popupContainer = document.querySelector('.popupcontainer');
   
     portalRoot.classList.remove('active');
-    popupContainer.remove();
+    if (popupContainer) popupContainer.remove();
     portalRoot.innerHTML = '';
 
     console.log('Popup removed')
